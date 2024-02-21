@@ -101,12 +101,13 @@ export default class PipelineMultiEnvGitops {
 
         try {
             // TODO - add dynamic gitowner suport when using codeStar config const { gitOwner, gitRepositoryName } = await getRepositoryData();
+            const gitOwner = 'zampetti'
             const gitRepositoryName = 'cdk-eks-blueprints-patterns';
 
             blueprints.CodePipelineStack.builder()
                 .application('npx ts-node bin/pipeline-multienv-gitops.ts')
                 .name('eks-blueprint-pipeline')
-                .owner(GITHUB_ORG)
+                .owner(gitOwner)
                 .codeBuildPolicies(blueprints.DEFAULT_BUILD_POLICIES)
                 .repository({
                     repoUrl: gitRepositoryName,
